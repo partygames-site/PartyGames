@@ -1,0 +1,10 @@
+# Output della build (rigenerato da tools/build.mjs e dal workflow)
+dist/
+
+# Copia di lavoro dei giochi originali: contiene riferimenti personali,
+# NON deve mai essere committata né pubblicata.
+_legacy/
+
+node_modules/
+.DS_Store
+Thumbs.db

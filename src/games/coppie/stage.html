@@ -1,0 +1,42 @@
+<div class="gk-view" data-view="setup">
+  <h2 class="gk-title">{{ui.setupTitle}}</h2>
+  <p class="gk-lead">{{ui.setupLead}}</p>
+  <div class="gk-modes" role="radiogroup" aria-label="{{ui.modeLabel}}" data-modes></div>
+  <label class="gk-hint"><input type="checkbox" data-reset checked> {{ui.resetLabel}}</label>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-start>{{ui.start}} ▶</button>
+  </div>
+</div>
+
+<div class="gk-view" data-view="play" hidden>
+  <div class="gk-topbar">
+    <span class="gk-pill" data-mode-pill></span>
+    <span class="gk-pill" data-counter></span>
+  </div>
+
+  <div class="gk-card">
+    <p class="gk-eyebrow" data-eyebrow></p>
+    <p class="gk-question" data-question aria-live="polite"></p>
+  </div>
+
+  <p class="gk-hint">{{ui.scoreHint}}</p>
+  <div class="gk-scoreboard" data-scoreboard></div>
+
+  <div class="gk-actions">
+    <button type="button" class="btn btn--ghost btn--lg" data-end>🏁 {{ui.end}}</button>
+    <button type="button" class="btn btn--accent btn--lg" data-next>{{ui.next}} ▶</button>
+  </div>
+</div>
+
+<div class="gk-view" data-view="result" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">🏆</span>
+    <h2 class="gk-result__title">{{ui.resultTitle}}</h2>
+    <p class="gk-result__line" data-result-line></p>
+  </div>
+  <ol class="gk-ranking" data-ranking></ol>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--ghost btn--lg" data-back>{{ui.back}}</button>
+    <button type="button" class="btn btn--accent btn--lg" data-restart>{{ui.restart}} ▶</button>
+  </div>
+</div>

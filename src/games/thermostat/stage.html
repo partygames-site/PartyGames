@@ -1,0 +1,65 @@
+<div class="gk-view" data-view="setup">
+  <h2 class="gk-title">{{ui.setupTitle}}</h2>
+  <p class="gk-lead">{{ui.setupLead}}</p>
+  <div class="gk-fields">
+    <label class="gk-field"><span data-player-label="1"></span><input class="gk-input" type="text" maxlength="20" data-player="0"></label>
+    <label class="gk-field"><span data-player-label="2"></span><input class="gk-input" type="text" maxlength="20" data-player="1"></label>
+  </div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-start>{{ui.start}} ▶</button>
+  </div>
+</div>
+
+<div class="gk-view" data-view="play" hidden>
+  <div class="gk-topbar">
+    <span class="gk-pill" data-range-label></span>
+    <span class="gk-pill" data-round></span>
+  </div>
+
+  <p class="gk-turn" data-turn aria-live="polite"></p>
+  <div class="gk-scoreboard" data-scoreboard></div>
+
+  <div class="gk-card">
+    <p class="gk-question" data-question></p>
+  </div>
+
+  <div class="thermo" aria-hidden="true">
+    <div class="thermo__ends"><span data-scale-low></span><span data-scale-high></span></div>
+    <div class="thermo__track">
+      <div class="thermo__mask thermo__mask--left" data-mask-left></div>
+      <div class="thermo__mask thermo__mask--right" data-mask-right></div>
+      <div class="thermo__marker" data-marker><span data-marker-value></span><i></i></div>
+    </div>
+    <div class="thermo__labels">
+      <span class="thermo__bound" data-low></span>
+      <span class="thermo__hint">{{ui.rangeHint}}</span>
+      <span class="thermo__bound" data-high></span>
+    </div>
+  </div>
+
+  <form class="gk-guess" data-guess-form novalidate>
+    <label class="visually-hidden" for="thermo-guess">{{ui.guessLabel}}</label>
+    <input class="gk-input" id="thermo-guess" type="number" inputmode="numeric" step="1" data-guess>
+    <button type="submit" class="btn btn--accent">{{ui.submit}} ✔</button>
+  </form>
+  <p class="gk-error" data-error role="alert"></p>
+  <p class="gk-hint">💡 {{ui.hint}}</p>
+
+  <div class="gk-history" data-history></div>
+
+  <button type="button" class="link-button" data-reveal>♻️ {{ui.reveal}}</button>
+</div>
+
+<div class="gk-view" data-view="win" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">🏆</span>
+    <h2 class="gk-result__title" data-win-title></h2>
+    <p class="gk-result__line" data-win-line></p>
+    <p class="gk-hint" data-win-detail></p>
+  </div>
+  <div class="gk-scoreboard" data-win-scoreboard></div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--ghost btn--lg" data-change>👥 {{ui.changePlayers}}</button>
+    <button type="button" class="btn btn--accent btn--lg" data-new-round>🔄 {{ui.newRound}} ▶</button>
+  </div>
+</div>

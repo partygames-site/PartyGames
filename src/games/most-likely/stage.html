@@ -1,0 +1,36 @@
+<div class="gk-view" data-view="play">
+  <div class="gk-topbar">
+    <div class="gk-segment" role="group" aria-label="{{ui.packLabel}}" data-packs></div>
+    <span class="gk-pill" data-counter></span>
+  </div>
+
+  <div class="gk-card">
+    <p class="gk-eyebrow">{{ui.eyebrow}}</p>
+    <p class="gk-question" data-question aria-live="polite"></p>
+  </div>
+
+  <div class="gk-forfeit">
+    <span class="gk-forfeit__label">{{ui.forfeitLabel}}</span>
+    <p class="gk-forfeit__text" data-forfeit aria-live="polite"></p>
+    <button type="button" class="btn btn--ghost btn--sm" data-new-forfeit>{{ui.newForfeit}}</button>
+  </div>
+
+  <div class="gk-actions">
+    <button type="button" class="btn btn--ghost btn--lg" data-vote>⏱ {{ui.vote}}</button>
+    <button type="button" class="btn btn--accent btn--lg" data-next>{{ui.next}} ▶</button>
+  </div>
+
+  <p class="gk-info">{{ui.info}}</p>
+  <button type="button" class="link-button" data-end>{{ui.end}}</button>
+</div>
+
+<div class="gk-view" data-view="result" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">🎉</span>
+    <h2 class="gk-result__title">{{ui.resultTitle}}</h2>
+    <p class="gk-result__line" data-result-line></p>
+  </div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-restart>{{ui.restart}} ▶</button>
+  </div>
+</div>
