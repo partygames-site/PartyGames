@@ -50,7 +50,14 @@ const AD_SIZES = {
   results: "responsive 336×280"
 };
 
+/* Spazi pubblicitari presenti nella pagina solo se AdSense è attivo o se
+   sono richiesti i segnaposto: altrimenti nessun riquadro vuoto */
+export const ADS_ON = SITE.adsense.enabled || SITE.adsense.showPlaceholders;
+export const ADSENSE_CLIENT_OK = /^ca-pub-d{16}$/.test(SITE.adsense.client);
+
 export function adSlot(key, t, { hidden = false } = {}) {
+  if (!ADS_ON) return `
+<!-- GOOGLE ADSENSE CODE HERE — slot "${key}" (${AD_SIZES[key]}): disattivato in src/config.mjs → adsense -->`;
   return `
 <!-- GOOGLE ADSENSE CODE HERE — slot "${key}" (${AD_SIZES[key]}). Configurare l'ID in src/config.mjs → adsense.slots.${key} -->
 <div class="ad-slot ad-slot--${key}" data-ad-key="${key}"${hidden ? " hidden" : ""}>

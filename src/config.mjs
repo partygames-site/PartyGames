@@ -49,7 +49,7 @@ export const SITE = {
     client: "ca-pub-XXXXXXXXXXXXXXXX",
     // Mostra un riquadro tratteggiato con le dimensioni dello slot
     // (utile in sviluppo). In produzione impostare false.
-    showPlaceholders: true,
+    showPlaceholders: false,
     // ID delle unità pubblicitarie create nel pannello AdSense
     slots: {
       top: "0000000001",      // banner orizzontale sotto l'header

@@ -5,7 +5,7 @@
    ========================================================= */
 
 import { SITE } from "../config.mjs";
-import { esc, href, absUrl, jsonScript, adSlot, icon, logo } from "./util.mjs";
+import { esc, href, absUrl, jsonScript, adSlot, ADS_ON, ADSENSE_CLIENT_OK, icon, logo } from "./util.mjs";
 
 /**
  * @param {object} p
@@ -34,7 +34,7 @@ export function renderPage(p) {
   const path = p.paths[t.code];
   const canonical = absUrl(path);
   const ogImage = absUrl(p.ogImage || `/assets/img/og/home-${t.code}.png`);
-  const rails = p.rails !== false;
+  const rails = p.rails !== false && ADS_ON;
   const year = new Date().getFullYear();
 
   const alternates = SITE.languages
@@ -126,6 +126,7 @@ ${ogAlternates}
 <link rel="apple-touch-icon" href="${href("/assets/img/icons/apple-touch-icon.png")}">
 <link rel="manifest" href="${href("/manifest.webmanifest")}">
 <meta name="theme-color" content="${SITE.themeColor}">
+${ADSENSE_CLIENT_OK ? `<meta name="google-adsense-account" content="${SITE.adsense.client}">` : ""}
 <meta name="color-scheme" content="dark">
 
 <!-- Font ospitati localmente (SIL OFL 1.1): nessuna richiesta a server terzi -->
@@ -148,8 +149,8 @@ ${jsonLd}
 
 ${renderHeader(t, dicts, p.paths)}
 
-<div class="ad-band">${adSlot("top", t)}
-</div>
+${ADS_ON ? `<div class="ad-band">${adSlot("top", t)}
+</div>` : ""}
 
 <div class="page-shell${rails ? " page-shell--rails" : ""}">
 ${rails ? `<aside class="ad-rail ad-rail--left" aria-label="${esc(t.ui.adLabel)}">${adSlot("rail", t)}
@@ -162,8 +163,8 @@ ${rails ? `<aside class="ad-rail ad-rail--right" aria-label="${esc(t.ui.adLabel)
 </aside>` : ""}
 </div>
 
-<div class="ad-band ad-band--bottom">${adSlot("bottom", t)}
-</div>
+${ADS_ON ? `<div class="ad-band ad-band--bottom">${adSlot("bottom", t)}
+</div>` : ""}
 
 ${renderFooter(t, year)}
 ${renderConsentBanner(t)}
