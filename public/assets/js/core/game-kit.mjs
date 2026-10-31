@@ -8,7 +8,7 @@
    createDeck(items)       mazzo che si rimescola da solo a fine giro
    createViews(root)       mostra una sola schermata [data-view] alla volta
    countdown(opts)         conto alla rovescia a schermo intero (Promise)
-   beep(freq, seconds)     suono generato via Web Audio (nessun file audio)
+   beep(freq, s, type)     suono generato via Web Audio (nessun file audio)
    celebrate()             coriandoli in CSS per la schermata di vittoria
    mountScoreboard(el, o)  tabellone collegato alle squadre globali (PG.teams)
    ========================================================= */
@@ -80,12 +80,12 @@ export function createViews(root) {
 
 /* ---------------- Audio ---------------- */
 let audioCtx;
-export function beep(freq = 440, seconds = 0.15) {
+export function beep(freq = 440, seconds = 0.15, type = "sine") {
   try {
     audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
-    osc.type = "sine";
+    osc.type = type;
     osc.frequency.value = freq;
     gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + seconds);

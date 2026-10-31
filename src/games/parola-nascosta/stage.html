@@ -1,0 +1,48 @@
+<div class="gk-view" data-view="play">
+  <div class="gk-topbar">
+    <div class="gk-segment" role="group" aria-label="{{ui.levelLabel}}" data-levels></div>
+    <span class="gk-pill" data-counter></span>
+  </div>
+
+  <div class="gk-words" data-words aria-live="polite"></div>
+
+  <div class="gk-ring" data-ring role="timer" aria-live="off"><span data-ring-value></span></div>
+  <p class="gk-timer__text" data-status aria-live="polite"></p>
+
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-start>▶ {{ui.start}}</button>
+    <button type="button" class="btn btn--ghost btn--lg" data-stop hidden></button>
+  </div>
+
+  <p class="gk-hint">{{ui.answersHint}}</p>
+  <div class="gk-answers" data-answers></div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent" data-verify disabled>🔍 {{ui.verify}}</button>
+  </div>
+
+  <div class="gk-solution" data-solution hidden>
+    <p class="gk-solution__label">{{ui.solutionLabel}}</p>
+    <p class="gk-solution__word" data-solution-word></p>
+    <p class="gk-solution__note" data-solution-links></p>
+  </div>
+
+  <div class="gk-scoreboard" data-scoreboard></div>
+
+  <div class="gk-actions">
+    <button type="button" class="btn btn--ghost" data-reveal>👁 {{ui.reveal}}</button>
+    <button type="button" class="btn btn--accent" data-next>⏭ {{ui.next}}</button>
+  </div>
+  <button type="button" class="link-button" data-end>{{ui.end}}</button>
+</div>
+
+<div class="gk-view" data-view="result" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">🧩</span>
+    <h2 class="gk-result__title">{{ui.resultTitle}}</h2>
+    <p class="gk-result__line" data-result-line></p>
+  </div>
+  <ol class="gk-ranking" data-ranking></ol>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-restart>{{ui.restart}} ▶</button>
+  </div>
+</div>

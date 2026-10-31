@@ -98,7 +98,8 @@ export const GAMES = [
   },
   {
     id: "fire-down",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🔥",
     color: "#00e676",
     categories: ["party", "words"],
@@ -123,7 +124,8 @@ export const GAMES = [
   },
   {
     id: "nomi-cose-citta",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🔤",
     color: "#ffd600",
     categories: ["words", "teams"],
@@ -324,7 +326,8 @@ export const GAMES = [
   },
   {
     id: "parola-nascosta",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🧩",
     color: "#ffc247",
     categories: ["words", "teams"],
@@ -349,7 +352,8 @@ export const GAMES = [
   },
   {
     id: "duello-lampo",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "⚡",
     color: "#4d8bff",
     categories: ["quiz", "teams"],

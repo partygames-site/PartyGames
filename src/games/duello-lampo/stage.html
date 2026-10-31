@@ -1,0 +1,52 @@
+<div class="gk-view" data-view="play">
+  <details class="dl-types">
+    <summary>{{ui.typesSummary}}</summary>
+    <div class="gk-segment" data-types></div>
+  </details>
+
+  <div class="gk-topbar">
+    <span class="gk-pill" data-type></span>
+    <span class="gk-pill" data-counter></span>
+  </div>
+
+  <section class="gk-card dl-card" data-card aria-live="polite">
+    <p class="gk-question" data-prompt></p>
+    <p class="gk-hint" data-hint></p>
+    <div class="dl-widget" data-widget></div>
+
+    <div class="gk-timer" data-timer-box hidden>
+      <div class="gk-ring" data-ring role="timer" aria-live="off"><span data-ring-value></span></div>
+      <button type="button" class="btn btn--ghost btn--sm" data-timer></button>
+    </div>
+
+    <div class="gk-solution" data-solution hidden>
+      <p class="gk-solution__label">{{ui.solutionLabel}}</p>
+      <p class="gk-solution__word" data-solution-text></p>
+      <p class="gk-solution__note" data-solution-note></p>
+    </div>
+    <button type="button" class="btn btn--ghost btn--sm" data-reveal>👁 {{ui.reveal}}</button>
+  </section>
+
+  <div class="gk-scoreboard" data-scoreboard></div>
+
+  <p class="gk-hint">{{ui.pointsHint}}</p>
+  <div class="dl-points" data-points></div>
+  <p class="gk-timer__text" data-points-summary aria-live="polite"></p>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--ghost" data-none>🙅 {{ui.none}}</button>
+    <button type="button" class="btn btn--accent btn--lg" data-next>⏭ {{ui.next}}</button>
+  </div>
+  <button type="button" class="link-button" data-end>{{ui.end}}</button>
+</div>
+
+<div class="gk-view" data-view="result" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">⚡</span>
+    <h2 class="gk-result__title">{{ui.resultTitle}}</h2>
+    <p class="gk-result__line" data-result-line></p>
+  </div>
+  <ol class="gk-ranking" data-ranking></ol>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-restart>{{ui.restart}} ▶</button>
+  </div>
+</div>
