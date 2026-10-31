@@ -10,14 +10,16 @@ export const SITE = {
   name: "PartyGames",
 
   // Dominio definitivo, SENZA slash finale.
-  // TODO produzione: sostituire con il dominio reale.
-  url: "https://www.example.com",
+  // Su GitHub Pages lo imposta da sé la GitHub Action (SITE_URL),
+  // anche dopo aver collegato un dominio personalizzato.
+  // TODO produzione (altri hosting): sostituire con il dominio reale.
+  url: process.env.SITE_URL || "https://www.example.com",
 
   // Sottocartella di pubblicazione, SENZA slash finale.
-  // "" con dominio personalizzato (consigliato). Per GitHub Pages
-  // senza dominio (utente.github.io/PartyGames) usare
-  // "/PartyGames".
-  basePath: "",
+  // "" con dominio personalizzato (consigliato); "/PartyGames" per
+  // utente.github.io/PartyGames. Su GitHub Pages lo imposta la
+  // GitHub Action (BASE_PATH).
+  basePath: process.env.BASE_PATH ?? "",
 
   // Lingue disponibili. La prima è la lingua di default ed è
   // servita alla radice "/"; le altre sotto "/<codice>/".

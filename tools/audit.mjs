@@ -12,6 +12,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { SITE } from "../src/config.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SCAN_DIRS = ["src", "public", "dist", "tools", "README.md"];
@@ -35,7 +36,8 @@ const ALLOWED_HOSTS = [
   "www.youronlinechoices.eu", "www.garanteprivacy.it",
   "support.google.com", "support.mozilla.org", "support.apple.com", "support.microsoft.com",
   "github.com", "scripts.sil.org", // licenze OFL dei font
-  "localhost" // server di sviluppo
+  "localhost", // server di sviluppo
+  new URL(SITE.url).hostname // dominio del sito (SITE_URL in fase di deploy)
 ];
 // 3. Unici file multimediali ammessi (generati da tools/render-images.mjs)
 const MEDIA_RE = /\.(png|jpe?g|gif|webp|avif|mp3|wav|ogg|m4a|mp4|webm)$/i;
