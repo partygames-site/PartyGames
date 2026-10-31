@@ -53,7 +53,7 @@ const AD_SIZES = {
 /* Spazi pubblicitari presenti nella pagina solo se AdSense è attivo o se
    sono richiesti i segnaposto: altrimenti nessun riquadro vuoto */
 export const ADS_ON = SITE.adsense.enabled || SITE.adsense.showPlaceholders;
-export const ADSENSE_CLIENT_OK = /^ca-pub-d{16}$/.test(SITE.adsense.client);
+export const ADSENSE_CLIENT_OK = /^ca-pub-\d{16}$/.test(SITE.adsense.client);
 
 export function adSlot(key, t, { hidden = false } = {}) {
   if (!ADS_ON) return `

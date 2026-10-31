@@ -46,7 +46,7 @@ export const SITE = {
     // Google viene caricato. Impostare true dopo l'approvazione.
     enabled: false,
     // Publisher ID AdSense, es. "ca-pub-1234567890123456"
-    client: "ca-pub-XXXXXXXXXXXXXXXX",
+    client: "ca-pub-9747899856395322",
     // Mostra un riquadro tratteggiato con le dimensioni dello slot
     // (utile in sviluppo). In produzione impostare false.
     showPlaceholders: false,
