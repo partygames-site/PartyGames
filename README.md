@@ -106,6 +106,8 @@ La corrispondenza tra id e file originali è in `_legacy/MAPPING.md` (solo local
 ## Deploy
 
 - **GitHub Pages:** in Settings → Pages scegliere *GitHub Actions* come sorgente.
-  `.github/workflows/deploy.yml` esegue build e audit a ogni push su `main`. Senza dominio
-  personalizzato impostare `basePath: "/<nome-repo>"`.
-- **Cloudflare Pages:** comando di build `node tools/build.mjs`, cartella di output `dist`.
+  `.github/workflows/deploy.yml` esegue build e audit a ogni push su `main`. L'indirizzo
+  (`utente.github.io/<repo>` oppure il dominio personalizzato) viene letto da `actions/configure-pages`
+  e passato alla build come `SITE_URL` e `BASE_PATH`: non serve modificare `src/config.mjs`.
+- **Cloudflare Pages:** comando di build `node tools/build.mjs`, cartella di output `dist`,
+  variabile d'ambiente `SITE_URL` con il dominio (oppure `url` in `src/config.mjs`).
