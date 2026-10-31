@@ -44,4 +44,4 @@ http.createServer(async (req, res) => {
   res.writeHead(status, { "Content-Type": TYPES[path.extname(target)] || "application/octet-stream" });
   res.end(await fs.readFile(target));
   console.log(status, urlPath);
-}).listen(PORT, () => console.log(`PartyGames su http://localhost:${PORT}`));
+}).listen(PORT, () => console.log(`PartyGames Club su http://localhost:${PORT}`));

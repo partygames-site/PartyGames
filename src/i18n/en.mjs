@@ -7,12 +7,12 @@ export default {
   name: "English",
 
   routes: {
-    home: "/en/",
-    games: "/en/games/",
-    privacy: "/en/privacy/",
-    cookies: "/en/cookie-policy/",
-    about: "/en/about/",
-    contact: "/en/contact/"
+    home: "/",
+    games: "/games/",
+    privacy: "/privacy/",
+    cookies: "/cookie-policy/",
+    about: "/about/",
+    contact: "/contact/"
   },
 
   ui: {
@@ -92,10 +92,10 @@ export default {
   },
 
   home: {
-    title: "Party Games & Group Games to Play at Home | PartyGames",
+    title: "Party Games & Group Games to Play at Home | PartyGames Club",
     description: "16 free party games for game night: quizzes, team challenges, word games and games for couples. Play on your phone, computer or TV, with no app and no sign-up.",
     keywords: "party games, group games, games to play at home, game night games, team games, quiz games for friends, free online party games, house party games, family game night, party games for adults, icebreaker games, fun group activities",
-    ogTitle: "PartyGames — Group games to play at home",
+    ogTitle: "PartyGames Club — Group games to play at home",
     eyebrow: "Free · No app · No sign-up",
     h1: "Party games and group games to play at home",
     lead: "Quizzes, team challenges, word games and games for couples for parties, birthdays and game nights. Open a game on your phone or cast it to the TV and you're ready in seconds.",
@@ -112,7 +112,7 @@ export default {
     teamsH2: "Your teams",
     teamsIntro: "Set names, colours and scores once and every team game will use them automatically. The data stays on your device only.",
     resetScores: "Reset scores",
-    whyH2: "Why play with PartyGames",
+    whyH2: "Why play with PartyGames Club",
     why: [
       { h3: "Ready in seconds", p: "No app to install and no account: open a game page and start right away, in any browser." },
       { h3: "Great on TV, computer and phone", p: "Big text you can read from across the room: cast the game to your TV and run it from your phone or laptop." },
@@ -127,7 +127,7 @@ export default {
     ],
     faqH2: "Frequently asked questions",
     faq: [
-      { q: "Are the games really free?", a: "Yes. Every PartyGames game is free and needs no sign-up. The site is funded by advertising." },
+      { q: "Are the games really free?", a: "Yes. Every PartyGames Club game is free and needs no sign-up. The site is funded by advertising." },
       { q: "Do I need to install an app?", a: "No. The games run directly in the browser on phones, tablets, computers and smart TVs." },
       { q: "How many people can play?", a: "It depends on the game: some are one-on-one duels, others support up to 6 teams with any number of players." },
       { q: "Can we play on the TV?", a: "Yes. The interface is designed to be read from a distance: just cast your computer or phone screen to the TV." },
@@ -137,31 +137,31 @@ export default {
 
   pages: {
     privacy: {
-      title: "Privacy Policy | PartyGames",
+      title: "Privacy Policy | PartyGames Club",
       h1: "Privacy Policy",
-      description: "How PartyGames processes personal data: data collected, purposes, cookies, Google AdSense, Google Analytics and your rights.",
+      description: "How PartyGames Club processes personal data: data collected, purposes, cookies, Google AdSense, Google Analytics and your rights.",
       breadcrumb: "Privacy Policy"
     },
     cookies: {
-      title: "Cookie Policy | PartyGames",
+      title: "Cookie Policy | PartyGames Club",
       h1: "Cookie Policy",
-      description: "Which cookies and similar technologies PartyGames uses, why, for how long, and how to manage or withdraw your consent.",
+      description: "Which cookies and similar technologies PartyGames Club uses, why, for how long, and how to manage or withdraw your consent.",
       breadcrumb: "Cookie Policy"
     },
     about: {
-      title: "About | PartyGames",
-      h1: "About PartyGames",
-      description: "PartyGames is a collection of free group games and party games to play at home, made for parties and game nights.",
+      title: "About | PartyGames Club",
+      h1: "About PartyGames Club",
+      description: "PartyGames Club is a collection of free group games and party games to play at home, made for parties and game nights.",
       breadcrumb: "About"
     },
     contact: {
-      title: "Contact | PartyGames",
+      title: "Contact | PartyGames Club",
       h1: "Contact",
-      description: "Get in touch with the PartyGames team for bug reports, new game ideas or privacy requests.",
+      description: "Get in touch with the PartyGames Club team for bug reports, new game ideas or privacy requests.",
       breadcrumb: "Contact"
     },
     notFound: {
-      title: "Page not found | PartyGames",
+      title: "Page not found | PartyGames Club",
       h1: "Oops! Page not found",
       lead: "The page you are looking for does not exist or has been moved.",
       back: "Back to the home page"

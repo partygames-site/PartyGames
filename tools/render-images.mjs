@@ -87,6 +87,7 @@ body{background:#0a0e1a;color:#f2f4ff;font-family:Inter,sans-serif;position:rela
 .wrap{position:absolute;inset:0;padding:72px 80px;display:flex;flex-direction:column}
 .brand{display:flex;align-items:center;gap:18px;font-family:Poppins;font-weight:900;font-size:40px}
 .brand b{background:linear-gradient(90deg,#4dd9ff,#b06aff 55%,#ff2d55);-webkit-background-clip:text;color:transparent}
+.brand i{font-style:normal;font-weight:700;color:#aab3d6}
 .label{margin-top:auto;display:inline-block;align-self:flex-start;font-weight:700;font-size:24px;color:${accent};
   border:2px solid ${accent};border-radius:999px;padding:8px 22px;background:rgba(0,0,0,.25)}
 h1{font-family:Poppins;font-weight:900;font-size:${title.length > 34 ? 64 : 78}px;line-height:1.05;margin:22px 0 0;max-width:900px;letter-spacing:-1px}
@@ -101,7 +102,7 @@ p{font-size:30px;font-weight:500;color:#c3cae3;margin:20px 0 0;max-width:860px}
 <div class="conf" style="width:30px;height:10px;background:#4dd9ff;right:120px;top:300px;transform:rotate(-30deg)"></div>
 <div class="conf" style="width:14px;height:14px;border-radius:50%;background:#ff2d55;right:280px;top:270px"></div>
 <div class="wrap">
-  <div class="brand">${LOGO(64)}<span>Party<b>Games</b></span></div>
+  <div class="brand">${LOGO(64)}<span>Party<b>Games</b> <i>Club</i></span></div>
   <span class="label">${esc(label)}</span>
   <h1>${esc(title)}</h1>
   <p>${esc(subtitle)}</p>

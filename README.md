@@ -1,4 +1,4 @@
-# PartyGames
+# PartyGames Club
 
 Raccolta di giochi di gruppo e party game gratuiti da fare in casa, in italiano e inglese.
 Sito statico generato da un piccolo script Node.js senza dipendenze, pubblicabile su

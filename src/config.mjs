@@ -7,7 +7,7 @@
    ========================================================= */
 
 export const SITE = {
-  name: "PartyGames",
+  name: "PartyGames Club",
 
   // Dominio definitivo, SENZA slash finale.
   // Su GitHub Pages lo imposta da sé la GitHub Action (SITE_URL),
@@ -25,8 +25,8 @@ export const SITE = {
   // servita alla radice "/"; le altre sotto "/<codice>/".
   // Per aggiungere una lingua: creare src/i18n/<codice>.mjs,
   // src/content/<codice>/ e le voci nel registro giochi.
-  languages: ["it", "en"],
-  defaultLanguage: "it",
+  languages: ["en", "it"],
+  defaultLanguage: "en",
 
   themeColor: "#0a0e1a",
 

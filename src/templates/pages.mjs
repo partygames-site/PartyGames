@@ -211,7 +211,7 @@ export function notFoundPage(dicts) {
 
   const content = `${blocks}
 <script>
-  /* Mostra il blocco nella lingua del percorso richiesto (es. /en/...) */
+  /* Mostra il blocco nella lingua del percorso richiesto (es. /it/...) */
   (function () {
     var base = ${JSON.stringify(SITE.basePath)};
     var path = location.pathname.slice(base.length);

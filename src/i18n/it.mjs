@@ -9,12 +9,12 @@ export default {
 
   // Percorsi delle pagine in questa lingua (sempre con "/" finale)
   routes: {
-    home: "/",
-    games: "/giochi/",
-    privacy: "/privacy/",
-    cookies: "/cookie-policy/",
-    about: "/chi-siamo/",
-    contact: "/contatti/"
+    home: "/it/",
+    games: "/it/giochi/",
+    privacy: "/it/privacy/",
+    cookies: "/it/cookie-policy/",
+    about: "/it/chi-siamo/",
+    contact: "/it/contatti/"
   },
 
   ui: {
@@ -95,10 +95,10 @@ export default {
   },
 
   home: {
-    title: "Giochi di Gruppo e Party Game da Fare in Casa | PartyGames",
+    title: "Giochi di Gruppo e Party Game da Fare in Casa | PartyGames Club",
     description: "16 party game gratis per feste e serate tra amici: quiz, sfide a squadre, giochi di parole e di coppia. Si gioca da smartphone, PC o TV, senza app e senza registrazione.",
     keywords: "giochi di gruppo, party game, giochi da fare in casa, giochi per feste, giochi per serate tra amici, giochi a squadre, quiz per amici, giochi di società online, giochi da tavolo online gratis, passatempi di gruppo, giochi per adulti e ragazzi, giochi per la famiglia",
-    ogTitle: "PartyGames — Giochi di gruppo da fare in casa",
+    ogTitle: "PartyGames Club — Giochi di gruppo da fare in casa",
     eyebrow: "Gratis · Senza app · Senza registrazione",
     h1: "Giochi di gruppo e party game da fare in casa",
     lead: "Quiz, sfide a squadre, giochi di parole e di coppia per feste, compleanni e serate tra amici. Apri il gioco sul telefono o proiettalo sulla TV: si comincia in pochi secondi.",
@@ -115,7 +115,7 @@ export default {
     teamsH2: "Le tue squadre",
     teamsIntro: "Imposta nomi, colori e punteggio una volta sola: verranno usati automaticamente da tutti i giochi a squadre. I dati restano solo sul tuo dispositivo.",
     resetScores: "Azzera punteggi",
-    whyH2: "Perché giocare con PartyGames",
+    whyH2: "Perché giocare con PartyGames Club",
     why: [
       { h3: "Pronti in pochi secondi", p: "Nessuna app da installare e nessun account: apri la pagina del gioco e inizia subito, da qualsiasi browser." },
       { h3: "Perfetto su TV, PC e smartphone", p: "Testi grandi e leggibili da lontano: proietta il gioco sul televisore e gestisci la partita dal telefono o dal computer." },
@@ -130,7 +130,7 @@ export default {
     ],
     faqH2: "Domande frequenti",
     faq: [
-      { q: "I giochi sono davvero gratuiti?", a: "Sì. Tutti i giochi di PartyGames sono gratuiti e non richiedono registrazione. Il sito è finanziato da annunci pubblicitari." },
+      { q: "I giochi sono davvero gratuiti?", a: "Sì. Tutti i giochi di PartyGames Club sono gratuiti e non richiedono registrazione. Il sito è finanziato da annunci pubblicitari." },
       { q: "Serve installare un'app?", a: "No. I giochi funzionano direttamente nel browser di smartphone, tablet, computer e smart TV." },
       { q: "Quante persone possono giocare?", a: "Dipende dal gioco: alcuni sono sfide a due, altri funzionano con squadre fino a 6 gruppi e un numero libero di giocatori." },
       { q: "Si può giocare sulla TV?", a: "Sì. L'interfaccia è pensata per essere letta da lontano: basta proiettare lo schermo del PC o del telefono sul televisore." },
@@ -140,31 +140,31 @@ export default {
 
   pages: {
     privacy: {
-      title: "Privacy Policy | PartyGames",
+      title: "Privacy Policy | PartyGames Club",
       h1: "Privacy Policy",
-      description: "Informativa sul trattamento dei dati personali di PartyGames: dati raccolti, finalità, cookie, Google AdSense, Google Analytics e diritti degli utenti.",
+      description: "Informativa sul trattamento dei dati personali di PartyGames Club: dati raccolti, finalità, cookie, Google AdSense, Google Analytics e diritti degli utenti.",
       breadcrumb: "Privacy Policy"
     },
     cookies: {
-      title: "Cookie Policy | PartyGames",
+      title: "Cookie Policy | PartyGames Club",
       h1: "Cookie Policy",
-      description: "Quali cookie e tecnologie simili usa PartyGames, per quali finalità, per quanto tempo e come gestire o revocare il consenso.",
+      description: "Quali cookie e tecnologie simili usa PartyGames Club, per quali finalità, per quanto tempo e come gestire o revocare il consenso.",
       breadcrumb: "Cookie Policy"
     },
     about: {
-      title: "Chi siamo | PartyGames",
+      title: "Chi siamo | PartyGames Club",
       h1: "Chi siamo",
-      description: "PartyGames è una raccolta di giochi di gruppo e party game gratuiti da fare in casa, pensata per feste e serate tra amici.",
+      description: "PartyGames Club è una raccolta di giochi di gruppo e party game gratuiti da fare in casa, pensata per feste e serate tra amici.",
       breadcrumb: "Chi siamo"
     },
     contact: {
-      title: "Contatti | PartyGames",
+      title: "Contatti | PartyGames Club",
       h1: "Contatti",
-      description: "Contatta il team di PartyGames per segnalazioni, suggerimenti di nuovi giochi o richieste sulla privacy.",
+      description: "Contatta il team di PartyGames Club per segnalazioni, suggerimenti di nuovi giochi o richieste sulla privacy.",
       breadcrumb: "Contatti"
     },
     notFound: {
-      title: "Pagina non trovata | PartyGames",
+      title: "Pagina non trovata | PartyGames Club",
       h1: "Ops! Pagina non trovata",
       lead: "La pagina che cerchi non esiste o è stata spostata.",
       back: "Torna alla home"

@@ -179,6 +179,7 @@ ul[class], ol[class] { list-style: none; }
 .brand:hover { color: var(--text); }
 .logo-mark { width: 38px; height: 38px; }
 .brand__name { font-family: var(--font-display); font-weight: 900; font-size: 1.25rem; letter-spacing: .3px; }
+.brand__club { font-style: normal; font-weight: 700; color: var(--text-muted); }
 .brand__name span { background: var(--gradient-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
 .main-nav { display: flex; align-items: center; gap: var(--space-1); overflow-x: auto; scrollbar-width: none; }
