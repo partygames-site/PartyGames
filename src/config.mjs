@@ -31,14 +31,14 @@ export const SITE = {
   themeColor: "#0a0e1a",
 
   // Data dell'ultimo aggiornamento dei documenti legali (YYYY-MM-DD)
-  legalUpdated: "2026-10-17",
+  legalUpdated: "2026-10-31",
 
-  // Dati del titolare del trattamento (obbligatori per il GDPR).
-  // TODO produzione: compilare prima della pubblicazione.
+  // Dati del titolare del trattamento (obbligatori per il GDPR),
+  // mostrati in Privacy Policy e Contatti. L'email è un inoltro
+  // Porkbun verso la casella del progetto.
   controller: {
-    name: "[NOME E COGNOME / RAGIONE SOCIALE DEL TITOLARE]",
-    address: "[INDIRIZZO DEL TITOLARE]",
-    email: "[EMAIL DI CONTATTO]"
+    name: "Francesco Pettazzoni",
+    email: "contact@partygamesclub.com"
   },
 
   adsense: {
