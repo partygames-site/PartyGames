@@ -19,6 +19,9 @@ const PG = window.PG;
 export async function loadGameData() {
   const host = document.querySelector("[data-game-data]");
   const mod = await import(host.getAttribute("data-game-data"));
+  // Il gioco disegna la prima schermata subito dopo questo await: al frame
+  // successivo l'area di gioco viene mostrata (evita spostamenti del layout)
+  requestAnimationFrame(() => host.classList.add("is-ready"));
   return mod.default;
 }
 

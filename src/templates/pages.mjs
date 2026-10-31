@@ -349,6 +349,8 @@ ${related.length ? `<section class="section" aria-labelledby="related-title">
     content,
     bodyClass: `page-game game-${game.id}`,
     styles: ["/assets/css/game.css"],
+    // scaricati in parallelo invece che a catena (gioco → game kit → dati)
+    preload: [`/assets/js/games/${game.id}.js`, "/assets/js/core/game-kit.mjs", `/assets/data/${game.id}.${t.code}.mjs`],
     scripts: [
       ...(usesTeams ? ["/assets/js/core/teams.js"] : []),
       { src: `/assets/js/games/${game.id}.js`, module: true }

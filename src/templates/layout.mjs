@@ -25,6 +25,7 @@ import { esc, href, absUrl, jsonScript, adSlot, icon, logo } from "./util.mjs";
  * @param {string} p.content      HTML del <main>
  * @param {Array<string|{src:string,module:true}>} [p.scripts]  script aggiuntivi (classici con defer, o moduli ES)
  * @param {string[]} [p.styles]   fogli di stile aggiuntivi
+ * @param {string[]} [p.preload]  moduli ES da precaricare in parallelo (modulepreload)
  * @param {string} [p.bodyClass]
  * @param {boolean} [p.rails]     mostra le sidebar pubblicitarie (default true)
  */
@@ -133,9 +134,11 @@ ${ogAlternates}
 <link rel="stylesheet" href="${href("/assets/css/base.css")}">
 ${(p.styles || []).map((css) => `<link rel="stylesheet" href="${href(css)}">`).join("\n")}
 
-<!-- Config + Consent Mode v2: deve essere caricato PRIMA di qualsiasi tag Google -->
+<!-- Config + Consent Mode v2: consent.js è il primo script differito, quindi imposta
+     i default "denied" prima che ads.js o analytics.js possano caricare tag Google -->
 <script>window.PG=${jsonScript(clientConfig)};</script>
-<script src="${href("/assets/js/core/consent.js")}"></script>
+<script src="${href("/assets/js/core/consent.js")}" defer></script>
+${(p.preload || []).map((src) => `<link rel="modulepreload" href="${href(src)}">`).join("\n")}
 ${scripts}
 ${jsonLd}
 </head>
@@ -207,7 +210,7 @@ function renderFooter(t, year) {
   return `<footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <a class="brand" href="${href(t.routes.home)}">${logo("lg-f")}<span class="brand__name">Party<span>Games</span></span></a>
+      <a class="brand" href="${href(t.routes.home)}" aria-label="${esc(SITE.name)} — ${esc(t.ui.navHome)}">${logo("lg-f")}<span class="brand__name">Party<span>Games</span></span></a>
       <p>${esc(t.ui.footerTagline)}</p>
     </div>
     <nav class="site-footer__col" aria-label="${esc(t.ui.footerGames)}">

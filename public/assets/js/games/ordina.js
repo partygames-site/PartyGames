@@ -105,7 +105,7 @@ function renderRows() {
     wrap.style.setProperty("--team-color", team.color);
     const head = document.createElement("div");
     head.className = "or-row__head";
-    const name = Object.assign(document.createElement("h3"), { className: "or-row__name", textContent: team.name });
+    const name = Object.assign(document.createElement("p"), { className: "or-row__name", textContent: team.name });
     const actions = document.createElement("div");
     actions.className = "or-row__actions";
     const result = Object.assign(document.createElement("span"), { className: "or-row__result" });
