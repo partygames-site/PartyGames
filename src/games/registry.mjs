@@ -150,7 +150,8 @@ export const GAMES = [
   },
   {
     id: "ordina",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🔀",
     color: "#d500f9",
     categories: ["quiz", "teams"],
@@ -175,7 +176,8 @@ export const GAMES = [
   },
   {
     id: "top10",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🏆",
     color: "#ffb703",
     categories: ["quiz", "teams"],
@@ -226,7 +228,8 @@ export const GAMES = [
   },
   {
     id: "il-picco",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "⛰️",
     color: "#ffca28",
     categories: ["quiz"],
@@ -251,7 +254,8 @@ export const GAMES = [
   },
   {
     id: "skill-test",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🎯",
     color: "#b388ff",
     categories: ["quiz"],
@@ -276,7 +280,8 @@ export const GAMES = [
   },
   {
     id: "battaglia-asta",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🔨",
     color: "#22d3ee",
     categories: ["party"],
@@ -287,21 +292,22 @@ export const GAMES = [
         slug: "battaglia-all-asta",
         title: "Battaglia all'Asta",
         tagline: "Rilancia e costruisci la tua rosa",
-        desc: "Due giocatori, 20 crediti a testa e 10 elementi all'asta: rilancia ad alta voce e aggiudicati i 5 pezzi migliori, dai supereroi agli animali più forti.",
+        desc: "Due giocatori, 20 monete a testa e 10 elementi all'asta: rilancia ad alta voce e aggiudicati i 5 pezzi migliori, dai supereroi agli animali più forti.",
         keywords: "gioco dell'asta, asta tra amici, gioco a due, draft game, giochi di strategia per feste"
       },
       en: {
         slug: "auction-battle",
         title: "Auction Battle",
         tagline: "Bid and build your squad",
-        desc: "Two players, 20 credits each and 10 items up for auction: bid out loud and win the best 5, from superheroes to the toughest animals.",
+        desc: "Two players, 20 coins each and 10 items up for auction: bid out loud and win the best 5, from superheroes to the toughest animals.",
         keywords: "auction game, bidding game, draft game with friends, two player party game, strategy party game"
       }
     }
   },
   {
     id: "canzoni-emoji",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🎵",
     color: "#ff6fa8",
     categories: ["quiz", "teams"],
@@ -378,7 +384,8 @@ export const GAMES = [
   },
   {
     id: "la-stecca",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "📈",
     color: "#2dd4a7",
     categories: ["quiz", "teams"],
@@ -403,7 +410,8 @@ export const GAMES = [
   },
   {
     id: "intruso",
-    status: "soon",
+    status: "live",
+    teams: true,
     icon: "🕵️",
     color: "#ff7a45",
     categories: ["quiz", "teams"],

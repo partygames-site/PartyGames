@@ -1,0 +1,43 @@
+<div class="gk-view" data-view="play">
+  <div class="gk-topbar">
+    <span class="gk-pill" data-counter></span>
+    <button type="button" class="btn btn--ghost btn--sm" data-end>{{ui.end}}</button>
+  </div>
+
+  <div class="gk-card">
+    <p class="gk-question" data-title aria-live="polite"></p>
+  </div>
+
+  <p class="gk-turn" data-turn aria-live="polite"></p>
+  <p class="gk-eyebrow">{{ui.pointsLabel}}</p>
+  <div class="gk-scoreboard" data-local></div>
+
+  <div class="tt-board" data-board></div>
+
+  <form class="gk-guess" data-form novalidate>
+    <label class="visually-hidden" for="top10-answer">{{ui.answerLabel}}</label>
+    <input class="gk-input" id="top10-answer" type="text" autocomplete="off" spellcheck="false" placeholder="{{ui.placeholder}}" data-answer>
+    <button type="submit" class="btn btn--accent">{{ui.submit}}</button>
+  </form>
+  <p class="tt-feedback" data-feedback aria-live="polite"></p>
+  <p class="gk-hint">{{ui.hint}}</p>
+
+  <div class="gk-actions">
+    <button type="button" class="btn btn--danger" data-wrong>{{ui.wrong}}</button>
+    <button type="button" class="btn btn--ghost" data-show-all>{{ui.showAll}}</button>
+    <button type="button" class="btn btn--accent btn--lg" data-next>{{ui.next}}</button>
+  </div>
+</div>
+
+<div class="gk-view" data-view="result" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">🏆</span>
+    <h2 class="gk-result__title" data-result-title></h2>
+    <p class="gk-result__line">{{ui.resultLine}}</p>
+  </div>
+  <ol class="gk-ranking" data-ranking></ol>
+  <div class="gk-scoreboard" data-scoreboard></div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-restart>{{ui.restart}} ▶</button>
+  </div>
+</div>

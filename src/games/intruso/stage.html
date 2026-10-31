@@ -1,0 +1,35 @@
+<div class="gk-view" data-view="play">
+  <div class="gk-topbar">
+    <div class="gk-segment" role="group" aria-label="{{ui.modeLabel}}" data-modes></div>
+    <span class="gk-pill" data-counter></span>
+  </div>
+
+  <div class="gk-card">
+    <p class="gk-eyebrow" data-tag></p>
+    <p class="gk-question" data-question aria-live="polite"></p>
+    <p class="gk-hint">{{ui.hint}}</p>
+  </div>
+
+  <p class="gk-turn" data-turn aria-live="polite"></p>
+  <div class="gk-scoreboard" data-scoreboard></div>
+  <div class="in-cards" data-cards></div>
+
+  <div class="gk-actions">
+    <button type="button" class="btn btn--ghost" data-show-all hidden>{{ui.showAll}}</button>
+    <button type="button" class="btn btn--accent btn--lg" data-next hidden>{{ui.next}}</button>
+  </div>
+  <button type="button" class="link-button" data-skip>{{ui.skip}}</button>
+  <button type="button" class="link-button" data-end>{{ui.end}}</button>
+</div>
+
+<div class="gk-view" data-view="result" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">🕵️</span>
+    <h2 class="gk-result__title">{{ui.resultTitle}}</h2>
+    <p class="gk-result__line" data-result-line></p>
+  </div>
+  <ol class="gk-ranking" data-ranking></ol>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-restart>{{ui.restart}} ▶</button>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="gk-view" data-view="setup">
+  <h2 class="gk-title">{{ui.setupTitle}}</h2>
+  <div class="gk-fields" data-picks hidden>
+    <label class="gk-field">{{ui.duelLabel}} <select class="gk-input" data-pick="0"></select></label>
+    <label class="gk-field">{{ui.versus}} <select class="gk-input" data-pick="1"></select></label>
+  </div>
+  <p class="gk-eyebrow">{{ui.targetLabel}}</p>
+  <div class="gk-segment" role="group" aria-label="{{ui.targetLabel}}" data-targets></div>
+  <div class="gk-scoreboard" data-wins></div>
+  <button type="button" class="btn btn--accent btn--lg" data-random>{{ui.random}}</button>
+  <div class="st-cats" data-cats></div>
+  <p class="gk-hint">{{ui.disclaimer}}</p>
+</div>
+
+<div class="gk-view" data-view="duel" hidden>
+  <div class="gk-topbar">
+    <span class="gk-pill" data-manche></span>
+    <span class="gk-pill" data-counter></span>
+  </div>
+  <div class="gk-card st-element">
+    <p class="gk-eyebrow" data-cat-name></p>
+    <span class="st-element__emoji" data-el-emoji aria-hidden="true"></span>
+    <h2 class="st-element__name" data-el-name></h2>
+    <p class="gk-hint" data-rule></p>
+  </div>
+  <div class="gk-answers" data-inputs></div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-reveal>{{ui.reveal}}</button>
+  </div>
+  <div class="st-results" data-results hidden></div>
+  <p class="gk-turn" data-leader aria-live="polite"></p>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-next hidden></button>
+  </div>
+</div>
+
+<div class="gk-view" data-view="summary" hidden>
+  <h2 class="gk-title">{{ui.summaryTitle}}</h2>
+  <div class="st-table-wrap"><table class="st-table" data-table></table></div>
+  <p class="gk-turn" data-manche-result aria-live="polite"></p>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-next-manche>{{ui.nextManche}}</button>
+  </div>
+</div>
+
+<div class="gk-view" data-view="win" hidden>
+  <div class="gk-result">
+    <span class="gk-result__trophy" aria-hidden="true">🏆</span>
+    <h2 class="gk-result__title" data-win-title></h2>
+    <p class="gk-result__line" data-win-line></p>
+  </div>
+  <div class="gk-scoreboard" data-scoreboard></div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-new-match>{{ui.newMatch}} ▶</button>
+  </div>
+</div>
+
+<dialog class="gk-dialog" data-master>
+  <form method="dialog">
+    <h2>🛠️ {{ui.masterTitle}}</h2>
+    <dl>
+      <dt>{{ui.masterTyped}}</dt><dd data-m-typed></dd>
+    </dl>
+    <label class="gk-field">{{ui.masterPick}} <select class="gk-input" data-m-select></select></label>
+    <label class="gk-field">{{ui.masterValue}} <input class="gk-input" type="text" inputmode="decimal" autocomplete="off" data-m-value></label>
+    <p class="gk-hint">{{ui.masterHint}}</p>
+    <label class="gk-hint"><input type="checkbox" data-m-remember checked> {{ui.masterRemember}}</label>
+    <div class="gk-actions">
+      <button type="button" class="btn btn--ghost btn--sm" data-m-zero>{{ui.masterZero}}</button>
+      <button value="cancel" class="btn btn--ghost btn--sm">{{ui.masterCancel}}</button>
+      <button type="button" class="btn btn--accent btn--sm" data-m-apply>✅ {{ui.masterApply}}</button>
+    </div>
+  </form>
+</dialog>

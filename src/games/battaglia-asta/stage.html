@@ -1,0 +1,55 @@
+<div class="gk-view" data-view="setup">
+  <h2 class="gk-title">{{ui.setupTitle}}</h2>
+  <p class="gk-lead">{{ui.setupLead}}</p>
+  <div class="gk-fields" data-picks hidden>
+    <label class="gk-field">{{ui.duelLabel}} <select class="gk-input" data-pick="0"></select></label>
+    <label class="gk-field">{{ui.versus}} <select class="gk-input" data-pick="1"></select></label>
+  </div>
+  <div class="st-cats" data-cats></div>
+</div>
+
+<div class="gk-view" data-view="auction" hidden>
+  <div class="gk-topbar">
+    <span class="gk-pill" data-cat-label></span>
+    <span class="gk-pill" data-counter></span>
+  </div>
+  <div class="ba-grid">
+    <section class="ba-board" data-board="0"></section>
+    <div class="ba-center">
+      <div class="gk-card ba-item">
+        <span class="ba-item__emoji" data-item-emoji aria-hidden="true"></span>
+        <h2 class="ba-item__name" data-item-name aria-live="polite"></h2>
+      </div>
+      <p class="gk-eyebrow">{{ui.offer}}</p>
+      <p class="ba-offer" data-offer aria-live="polite"></p>
+      <div class="ba-bids">
+        <button type="button" class="btn btn--ghost btn--sm" data-add="1">+1</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-add="2">+2</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-add="5">+5</button>
+        <input class="gk-input" type="number" min="1" inputmode="numeric" aria-label="{{ui.offer}}" data-custom>
+        <button type="button" class="btn btn--ghost btn--sm" data-set>{{ui.custom}}</button>
+        <button type="button" class="btn btn--ghost btn--sm" data-reset aria-label="{{ui.resetOffer}}">↺</button>
+      </div>
+      <div class="ba-assign">
+        <button type="button" class="btn btn--lg" data-assign="0"></button>
+        <button type="button" class="btn btn--ghost" data-pass>{{ui.pass}}</button>
+        <button type="button" class="btn btn--lg" data-assign="1"></button>
+      </div>
+      <p class="gk-info" data-forced hidden>{{ui.forced}}</p>
+      <p class="gk-hint" data-last aria-live="polite"></p>
+    </div>
+    <section class="ba-board" data-board="1"></section>
+  </div>
+</div>
+
+<div class="gk-view" data-view="final" hidden>
+  <h2 class="gk-title">🏆 {{ui.finalTitle}}</h2>
+  <p class="gk-lead">{{ui.finalLead}}</p>
+  <div class="ba-final" data-final></div>
+  <div class="gk-actions" data-votes></div>
+  <p class="gk-turn" data-voted aria-live="polite"></p>
+  <div class="gk-scoreboard" data-scoreboard></div>
+  <div class="gk-actions">
+    <button type="button" class="btn btn--accent btn--lg" data-rematch>{{ui.rematch}}</button>
+  </div>
+</div>
