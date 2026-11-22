@@ -68,7 +68,7 @@ export const SITE = {
   analytics: {
     // ID di misurazione Google Analytics 4, es. "G-XXXXXXXXXX".
     // Vuoto = Analytics disattivato.
-    gaId: ""
+    gaId: "G-NCXCQZYLNJ"
   },
 
   // Versione del consenso: incrementarla quando cambiano le finalità
