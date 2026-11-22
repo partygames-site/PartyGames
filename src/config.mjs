@@ -33,6 +33,9 @@ export const SITE = {
   // Data dell'ultimo aggiornamento dei documenti legali (YYYY-MM-DD)
   legalUpdated: "2026-10-31",
 
+  // Codice di verifica del dominio su Pinterest (meta p:domain_verify), "" per disattivarlo
+  pinterestVerify: "d5905903a31838b8faf405c15c8b3872",
+
   // Autore delle guide (firma e dati strutturati Article)
   author: "Francesco",
 

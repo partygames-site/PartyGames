@@ -127,6 +127,7 @@ ${ogAlternates}
 <link rel="manifest" href="${href("/manifest.webmanifest")}">
 <meta name="theme-color" content="${SITE.themeColor}">
 ${ADSENSE_CLIENT_OK ? `<meta name="google-adsense-account" content="${SITE.adsense.client}">` : ""}
+${SITE.pinterestVerify ? `<meta name="p:domain_verify" content="${esc(SITE.pinterestVerify)}">` : ""}
 <meta name="color-scheme" content="dark">
 
 <!-- Font ospitati localmente (SIL OFL 1.1): nessuna richiesta a server terzi -->
