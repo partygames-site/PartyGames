@@ -19,6 +19,28 @@
 
 export const GUIDES = [
   {
+    id: "how-to-play",
+    icon: "📺",
+    color: "#4dd9ff",
+    published: "2026-11-22",
+    updated: "2026-11-22",
+    games: ["top10", "skill-test", "fire-down", "canzoni-emoji"],
+    i18n: {
+      en: {
+        slug: "how-to-play-party-games-on-tv",
+        title: "How to Play: the Game Master, the TV and the Teams in Five Minutes",
+        desc: "A quick guide to playing every PartyGames Club game: what you need, how to cast the game to a TV or projector, what the game master does and how teams and points work.",
+        keywords: "how to play party games on tv, game master role, cast browser game to tv, party games projector"
+      },
+      it: {
+        slug: "come-si-gioca-master-tv-squadre",
+        title: "Come si gioca: il master, la TV e le squadre in cinque minuti",
+        desc: "Guida rapida per giocare a tutti i giochi di PartyGames Club: cosa serve, come proiettare il gioco su TV o proiettore, cosa fa il master e come funzionano squadre e punti.",
+        keywords: "come giocare ai giochi di gruppo sulla tv, ruolo del master, proiettare gioco sulla tv, giochi di gruppo con proiettore"
+      }
+    }
+  },
+  {
     id: "game-night",
     icon: "🎲",
     color: "#b06aff",

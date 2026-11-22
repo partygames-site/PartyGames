@@ -73,6 +73,7 @@ ${cards}
   <ol class="steps">
     ${h.how.map((s) => `<li class="step"><h3>${esc(s.h3)}</h3><p>${esc(s.p)}</p></li>`).join("")}
   </ol>
+  ${GUIDES.some((g) => g.id === "how-to-play") ? `<p class="section__more"><a class="btn btn--ghost" href="${href(guidePath(GUIDES.find((g) => g.id === "how-to-play"), t))}">${esc(GUIDES.find((g) => g.id === "how-to-play").i18n[t.code].title)} ${icon("arrow")}</a></p>` : ""}
 </section>
 
 ${GUIDES.length ? `<section class="section" id="guides" aria-labelledby="guides-title">
@@ -257,7 +258,7 @@ export function guidePage(t, dicts, guide, { html, faq, readMinutes }) {
   <header class="prose__head">
     <p class="guide__eyebrow"><span aria-hidden="true">${guide.icon}</span> ${esc(t.pages.guides.breadcrumb)}</p>
     <h1>${esc(m.title)}</h1>
-    <p class="prose__updated">${esc(t.ui.published)} ${dates}${updated} · ${readMinutes} ${esc(t.ui.minRead)}</p>
+    <p class="prose__updated">${esc(t.ui.by)} <a href="${href(t.routes.about)}">${esc(SITE.author)}</a> · ${esc(t.ui.published)} ${dates}${updated} · ${readMinutes} ${esc(t.ui.minRead)}</p>
   </header>
 ${html}
 </article>
@@ -280,7 +281,7 @@ ${others.length ? `<section class="section" aria-labelledby="more-guides-title">
     inLanguage: t.code,
     datePublished: guide.published,
     dateModified: guide.updated,
-    author: { "@type": "Organization", name: SITE.name, url: absUrl(t.routes.about) },
+    author: { "@type": "Person", name: SITE.author, url: absUrl(t.routes.about) },
     publisher: { "@type": "Organization", name: SITE.name, url: absUrl(t.routes.home) }
   }];
   if (faq.length) {

@@ -47,6 +47,7 @@ export default {
     rulesLink: "Regole e consigli",
     relatedGames: "Altri giochi da provare",
     readGuide: "Leggi la guida",
+    by: "di",
     minRead: "min di lettura",
     published: "Pubblicata il",
     updated: "Aggiornata il",

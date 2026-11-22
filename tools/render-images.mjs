@@ -110,7 +110,72 @@ p{font-size:30px;font-weight:500;color:#c3cae3;margin:20px 0 0;max-width:860px}
 </div></body></html>`;
 }
 
+/* ---------------- Pin Pinterest 1000×1500 (node tools/render-images.mjs --pins) ----------------
+   Immagini verticali per i social, salvate in marketing/pinterest/ (fuori dal sito e da git). */
+const OUT_PINS = path.join(ROOT, "marketing/pinterest");
+
+function pinHtml({ title, kicker, accent, icon, cta }) {
+  const size = title.length > 70 ? 68 : title.length > 45 ? 78 : 92;
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${FONT_CSS}
+html,body{margin:0;width:1000px;height:1500px;overflow:hidden}
+body{background:#0a0e1a;color:#f2f4ff;font-family:Inter,sans-serif;position:relative}
+.blob{position:absolute;border-radius:50%;filter:blur(110px)}
+.b1{width:700px;height:700px;background:#ff2d55;top:-260px;left:-240px;opacity:.35}
+.b2{width:760px;height:760px;background:${accent};bottom:-300px;right:-260px;opacity:.55}
+.b3{width:420px;height:420px;background:#4dd9ff;top:520px;left:520px;opacity:.18}
+.wrap{position:absolute;inset:0;padding:90px 80px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:18px;font-family:Poppins;font-weight:900;font-size:44px}
+.brand b{background:linear-gradient(90deg,#4dd9ff,#b06aff 55%,#ff2d55);-webkit-background-clip:text;color:transparent}
+.brand i{font-style:normal;font-weight:700;color:#aab3d6}
+.icon{margin-top:110px;font-size:150px;line-height:1;width:230px;height:230px;display:grid;place-items:center;border-radius:56px;
+  background:color-mix(in srgb, ${accent} 18%, transparent);border:3px solid color-mix(in srgb, ${accent} 55%, transparent)}
+.kicker{margin-top:70px;font-family:Poppins;font-weight:800;font-size:34px;letter-spacing:3px;text-transform:uppercase;color:${accent}}
+h1{font-family:Poppins;font-weight:900;font-size:${size}px;line-height:1.08;margin:24px 0 0;letter-spacing:-1px}
+.cta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:34px 44px;border-radius:36px;background:${accent};color:#0a0e1a;font-family:Poppins;font-weight:800;font-size:40px}
+.cta span{font-family:Inter;font-weight:700;font-size:30px;opacity:.85}
+</style></head><body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="wrap">
+  <div class="brand">${LOGO(72)}<span>Party<b>Games</b> <i>Club</i></span></div>
+  <div class="icon">${icon}</div>
+  <div class="kicker">${esc(kicker)}</div>
+  <h1>${esc(title)}</h1>
+  <div class="cta">${esc(cta)}<span>partygamesclub.com</span></div>
+</div></body></html>`;
+}
+
+const PIN_TEXT = {
+  en: { guide: "Free guide", game: "Free party game", readCta: "Read the guide →", playCta: "Play free →" },
+  it: { guide: "Guida gratuita", game: "Gioco di gruppo gratis", readCta: "Leggi la guida →", playCta: "Gioca gratis →" }
+};
+// Giochi più adatti a Pinterest (feste, serate, famiglia)
+const PIN_GAMES = ["top10", "canzoni-emoji", "most-likely", "coppie", "dilemmi", "skill-test"];
+
+async function renderPins() {
+  await fs.mkdir(OUT_PINS, { recursive: true });
+  let count = 0;
+  for (const code of SITE.languages) {
+    const txt = PIN_TEXT[code];
+    for (const g of GUIDES) {
+      await capture(pinHtml({ title: g.i18n[code].title, kicker: txt.guide, accent: g.color, icon: g.icon, cta: txt.readCta }),
+        1000, 1500, path.join(OUT_PINS, `${code}-guide-${g.id}.png`));
+      count++;
+    }
+    for (const id of PIN_GAMES) {
+      const g = GAMES.find((x) => x.id === id);
+      const m = g.i18n[code];
+      await capture(pinHtml({ title: `${m.title}: ${m.tagline}`, kicker: txt.game, accent: g.color, icon: g.icon, cta: txt.playCta }),
+        1000, 1500, path.join(OUT_PINS, `${code}-game-${g.id}.png`));
+      count++;
+    }
+  }
+  console.log(`✔ ${count} pin in marketing/pinterest/`);
+  await fs.rm(TMP, { recursive: true, force: true });
+}
+
 async function main() {
+  if (process.argv.includes("--pins")) return renderPins();
   await fs.mkdir(OUT_ICONS, { recursive: true });
   await fs.mkdir(OUT_OG, { recursive: true });
 

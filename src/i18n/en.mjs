@@ -45,6 +45,7 @@ export default {
     rulesLink: "Rules and tips",
     relatedGames: "More games to try",
     readGuide: "Read the guide",
+    by: "By",
     minRead: "min read",
     published: "Published",
     updated: "Updated",

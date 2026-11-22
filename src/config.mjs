@@ -33,6 +33,9 @@ export const SITE = {
   // Data dell'ultimo aggiornamento dei documenti legali (YYYY-MM-DD)
   legalUpdated: "2026-10-31",
 
+  // Autore delle guide (firma e dati strutturati Article)
+  author: "Francesco",
+
   // Dati del titolare del trattamento (obbligatori per il GDPR),
   // mostrati in Privacy Policy e Contatti. L'email è un inoltro
   // Porkbun verso la casella del progetto.

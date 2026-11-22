@@ -360,6 +360,7 @@ ul[class], ol[class] { list-style: none; }
 .guide-card__desc { color: var(--text-muted); font-size: .95rem; flex-grow: 1; }
 .guide-card__cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-weight: 700; color: color-mix(in srgb, var(--card) 62%, #fff); }
 .section__more { margin-top: var(--space-5); text-align: center; }
+.section__more .btn { white-space: normal; max-width: 100%; text-align: center; height: auto; }
 .guides-head { max-width: 780px; }
 .guides-head .prose__lead { margin-top: var(--space-3); color: var(--text-muted); }
 .guide-grid--index { margin-bottom: var(--space-7); }
@@ -370,6 +371,13 @@ ul[class], ol[class] { list-style: none; }
 }
 .guide .tip p { color: var(--text); }
 .guide .tip strong { color: color-mix(in srgb, var(--card) 62%, #fff); }
+.guide .personal {
+  margin: var(--space-5) 0; padding: var(--space-4) var(--space-5); border-radius: var(--radius);
+  background: var(--surface); border: 1px dashed color-mix(in srgb, var(--card) 55%, transparent);
+}
+.guide .personal p { color: var(--text); font-style: italic; }
+.guide .personal p + p { margin-top: var(--space-2); }
+.guide .personal__label { font-family: var(--font-display); font-style: normal !important; font-weight: 700; font-size: var(--fs-sm); color: color-mix(in srgb, var(--card) 62%, #fff) !important; margin-bottom: var(--space-2); }
 .game-card.is-shuffling { border-color: var(--cyan); box-shadow: 0 0 24px rgba(77, 217, 255, .5); }
 .game-card.is-chosen { border-color: var(--yellow); box-shadow: 0 0 44px rgba(255, 224, 102, .75); animation: chosen-pulse 1s ease-in-out 2; }
 @keyframes chosen-pulse { 50% { transform: scale(1.03); } }

@@ -8,3 +8,6 @@ _legacy/
 node_modules/
 .DS_Store
 Thumbs.db
+
+# Materiale per i social (pin Pinterest, testi dei post): solo locale
+marketing/
