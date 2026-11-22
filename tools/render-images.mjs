@@ -18,6 +18,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { SITE } from "../src/config.mjs";
 import { GAMES } from "../src/games/registry.mjs";
+import { GUIDES } from "../src/guides/registry.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_ICONS = path.join(ROOT, "public/assets/img/icons");
@@ -90,7 +91,7 @@ body{background:#0a0e1a;color:#f2f4ff;font-family:Inter,sans-serif;position:rela
 .brand i{font-style:normal;font-weight:700;color:#aab3d6}
 .label{margin-top:auto;display:inline-block;align-self:flex-start;font-weight:700;font-size:24px;color:${accent};
   border:2px solid ${accent};border-radius:999px;padding:8px 22px;background:rgba(0,0,0,.25)}
-h1{font-family:Poppins;font-weight:900;font-size:${title.length > 34 ? 64 : 78}px;line-height:1.05;margin:22px 0 0;max-width:900px;letter-spacing:-1px}
+h1{font-family:Poppins;font-weight:900;font-size:${title.length > 60 ? 54 : title.length > 34 ? 64 : 78}px;line-height:1.05;margin:22px 0 0;max-width:900px;letter-spacing:-1px}
 p{font-size:30px;font-weight:500;color:#c3cae3;margin:20px 0 0;max-width:860px}
 .dice{position:absolute;right:90px;top:70px;transform:rotate(14deg)}
 .conf{position:absolute;border-radius:6px}
@@ -144,6 +145,16 @@ async function main() {
         accent: g.color,
         label: `${t.ui.players}: ${g.players} · ~${g.minutes} min`
       }), 1200, 630, path.join(OUT_OG, `game-${g.id}-${code}.png`));
+      count++;
+    }
+
+    for (const g of GUIDES) {
+      await capture(ogHtml({
+        title: g.i18n[code].title,
+        subtitle: "",
+        accent: g.color,
+        label: `${g.icon} ${t.pages.guides.breadcrumb}`
+      }), 1200, 630, path.join(OUT_OG, `guide-${g.id}-${code}.png`));
       count++;
     }
   }

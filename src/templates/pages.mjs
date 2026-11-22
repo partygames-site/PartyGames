@@ -6,6 +6,7 @@
 
 import { SITE } from "../config.mjs";
 import { GAMES, gamePath } from "../games/registry.mjs";
+import { GUIDES, guidePath } from "../guides/registry.mjs";
 import { renderPage } from "./layout.mjs";
 import { esc, href, absUrl, adSlot, icon } from "./util.mjs";
 
@@ -73,6 +74,15 @@ ${cards}
     ${h.how.map((s) => `<li class="step"><h3>${esc(s.h3)}</h3><p>${esc(s.p)}</p></li>`).join("")}
   </ol>
 </section>
+
+${GUIDES.length ? `<section class="section" id="guides" aria-labelledby="guides-title">
+  <div class="section__head">
+    <h2 id="guides-title">${esc(h.guidesH2)}</h2>
+    <p>${esc(h.guidesIntro)}</p>
+  </div>
+  <div class="guide-grid">${GUIDES.slice(0, 3).map((g) => guideCard(g, t)).join("\n")}</div>
+  <p class="section__more"><a class="btn btn--ghost" href="${href(t.routes.guides)}">${esc(t.ui.allGuides)} ${icon("arrow")}</a></p>
+</section>` : ""}
 
 <section class="section" aria-labelledby="faq-title">
   <div class="section__head"><h2 id="faq-title">${esc(h.faqH2)}</h2></div>
@@ -177,6 +187,126 @@ ${bodyHtml}
     ],
     content,
     bodyClass: `page-${routeKey}`
+  });
+}
+
+/* ---------------------------------------------------------
+   GUIDE
+   Testi in src/guides/<id>/<lingua>.html, metadati in
+   src/guides/registry.mjs
+   --------------------------------------------------------- */
+function guideCard(g, t, { headingLevel = 3 } = {}) {
+  const m = g.i18n[t.code];
+  const h = `h${headingLevel}`;
+  return `    <article class="guide-card" style="--card:${g.color}">
+      <span class="guide-card__icon" aria-hidden="true">${g.icon}</span>
+      <${h} class="guide-card__title"><a class="guide-card__link" href="${href(guidePath(g, t))}">${esc(m.title)}</a></${h}>
+      <p class="guide-card__desc">${esc(m.desc)}</p>
+      <span class="guide-card__cta">${esc(t.ui.readGuide)} ${icon("arrow")}</span>
+    </article>`;
+}
+
+export function guidesIndexPage(t, dicts) {
+  const meta = t.pages.guides;
+  const content = `
+<header class="prose__head guides-head">
+  <h1>${esc(meta.h1)}</h1>
+  <p class="prose__lead">${esc(meta.intro)}</p>
+</header>
+<div class="guide-grid guide-grid--index">
+${GUIDES.map((g) => guideCard(g, t, { headingLevel: 2 })).join("\n")}
+</div>`;
+
+  return renderPage({
+    t, dicts,
+    paths: routePaths(dicts, "guides"),
+    title: meta.title,
+    description: meta.description,
+    ogImage: `/assets/img/og/home-${t.code}.png`,
+    breadcrumb: [
+      { name: t.ui.navHome, path: t.routes.home },
+      { name: meta.breadcrumb, path: t.routes.guides }
+    ],
+    jsonLd: [{
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: meta.h1,
+      description: meta.description,
+      url: absUrl(t.routes.guides),
+      inLanguage: t.code,
+      hasPart: GUIDES.map((g) => ({ "@type": "Article", headline: g.i18n[t.code].title, url: absUrl(guidePath(g, t)) }))
+    }],
+    content,
+    bodyClass: "page-guides"
+  });
+}
+
+/** Pagina di una guida. readMinutes è calcolato in build dal numero di parole. */
+export function guidePage(t, dicts, guide, { html, faq, readMinutes }) {
+  const m = guide.i18n[t.code];
+  const paths = Object.fromEntries(SITE.languages.map((code) => [code, guidePath(guide, dicts[code])]));
+  const games = guide.games.map((id) => GAMES.find((g) => g.id === id)).filter((g) => g && g.status === "live");
+  const others = GUIDES.filter((g) => g.id !== guide.id).slice(0, 3);
+  const dates = `<time datetime="${guide.published}">${formatDate(guide.published, t.code)}</time>`;
+  const updated = guide.updated !== guide.published
+    ? ` · ${esc(t.ui.updated)} <time datetime="${guide.updated}">${formatDate(guide.updated, t.code)}</time>`
+    : "";
+
+  const content = `
+<article class="prose guide" style="--card:${guide.color}">
+  <header class="prose__head">
+    <p class="guide__eyebrow"><span aria-hidden="true">${guide.icon}</span> ${esc(t.pages.guides.breadcrumb)}</p>
+    <h1>${esc(m.title)}</h1>
+    <p class="prose__updated">${esc(t.ui.published)} ${dates}${updated} · ${readMinutes} ${esc(t.ui.minRead)}</p>
+  </header>
+${html}
+</article>
+${games.length ? `<section class="section" aria-labelledby="guide-games-title">
+  <div class="section__head"><h2 id="guide-games-title">${esc(t.ui.gamesInGuide)}</h2></div>
+  <div class="game-grid">${games.map((g) => gameCard(g, t)).join("\n")}</div>
+</section>` : ""}
+${others.length ? `<section class="section" aria-labelledby="more-guides-title">
+  <div class="section__head"><h2 id="more-guides-title">${esc(t.ui.moreGuides)}</h2></div>
+  <div class="guide-grid">${others.map((g) => guideCard(g, t)).join("\n")}</div>
+</section>` : ""}`;
+
+  const jsonLd = [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: m.title,
+    description: m.desc,
+    url: absUrl(guidePath(guide, t)),
+    image: absUrl(`/assets/img/og/guide-${guide.id}-${t.code}.png`),
+    inLanguage: t.code,
+    datePublished: guide.published,
+    dateModified: guide.updated,
+    author: { "@type": "Organization", name: SITE.name, url: absUrl(t.routes.about) },
+    publisher: { "@type": "Organization", name: SITE.name, url: absUrl(t.routes.home) }
+  }];
+  if (faq.length) {
+    jsonLd.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } }))
+    });
+  }
+
+  return renderPage({
+    t, dicts,
+    paths,
+    title: `${m.title} | ${SITE.name}`,
+    description: m.desc,
+    keywords: m.keywords,
+    ogType: "article",
+    ogImage: `/assets/img/og/guide-${guide.id}-${t.code}.png`,
+    breadcrumb: [
+      { name: t.ui.navHome, path: t.routes.home },
+      { name: t.pages.guides.breadcrumb, path: t.routes.guides },
+      { name: m.title, path: guidePath(guide, t) }
+    ],
+    jsonLd,
+    content,
+    bodyClass: "page-guide"
   });
 }
 

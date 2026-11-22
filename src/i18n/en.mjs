@@ -11,6 +11,7 @@ export default {
     games: "/games/",
     privacy: "/privacy/",
     cookies: "/cookie-policy/",
+    guides: "/guides/",
     about: "/about/",
     contact: "/contact/"
   },
@@ -20,6 +21,7 @@ export default {
     navHome: "Home",
     navGames: "Games",
     navHowTo: "How to play",
+    navGuides: "Guides",
     navAbout: "About",
     mainNavLabel: "Main navigation",
     languageLabel: "Language",
@@ -41,7 +43,14 @@ export default {
     players: "Players",
     lastUpdated: "Last updated",
     rulesLink: "Rules and tips",
-    relatedGames: "More games to try"
+    relatedGames: "More games to try",
+    readGuide: "Read the guide",
+    minRead: "min read",
+    published: "Published",
+    updated: "Updated",
+    gamesInGuide: "Games mentioned in this guide",
+    moreGuides: "More guides",
+    allGuides: "All guides"
   },
 
   categories: {
@@ -125,6 +134,8 @@ export default {
       { h3: "2. Split into teams", p: "Use the “Your teams” panel to give each group a name and a colour: the score follows you from one game to the next." },
       { h3: "3. Cast it and play", p: "Connect your computer to the TV or mirror your phone. One host runs the game while everyone else plays." }
     ],
+    guidesH2: "Guides and game night ideas",
+    guidesIntro: "Not sure where to start? Our guides help you pick the right games for your group and plan the evening.",
     faqH2: "Frequently asked questions",
     faq: [
       { q: "Are the games really free?", a: "Yes. Every PartyGames Club game is free and needs no sign-up. The site is funded by advertising." },
@@ -159,6 +170,13 @@ export default {
       h1: "Contact",
       description: "Get in touch with the PartyGames Club team for bug reports, new game ideas or privacy requests.",
       breadcrumb: "Contact"
+    },
+    guides: {
+      title: "Party Game Guides: Ideas, Tips and Game Night Plans | PartyGames Club",
+      h1: "Guides to party games and game nights",
+      description: "Practical guides to hosting game nights, choosing the right party games for your group and planning games for Christmas, birthdays, the office and more.",
+      breadcrumb: "Guides",
+      intro: "Practical, tested advice for getting people playing: how to plan a game night, which games suit your group, and ready-made plans for holidays, birthdays and team events."
     },
     notFound: {
       title: "Page not found | PartyGames Club",

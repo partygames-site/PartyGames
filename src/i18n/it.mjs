@@ -13,6 +13,7 @@ export default {
     games: "/it/giochi/",
     privacy: "/it/privacy/",
     cookies: "/it/cookie-policy/",
+    guides: "/it/guide/",
     about: "/it/chi-siamo/",
     contact: "/it/contatti/"
   },
@@ -22,6 +23,7 @@ export default {
     navHome: "Home",
     navGames: "Giochi",
     navHowTo: "Come si gioca",
+    navGuides: "Guide",
     navAbout: "Chi siamo",
     mainNavLabel: "Navigazione principale",
     languageLabel: "Lingua",
@@ -43,7 +45,14 @@ export default {
     players: "Giocatori",
     lastUpdated: "Ultimo aggiornamento",
     rulesLink: "Regole e consigli",
-    relatedGames: "Altri giochi da provare"
+    relatedGames: "Altri giochi da provare",
+    readGuide: "Leggi la guida",
+    minRead: "min di lettura",
+    published: "Pubblicata il",
+    updated: "Aggiornata il",
+    gamesInGuide: "I giochi citati in questa guida",
+    moreGuides: "Altre guide",
+    allGuides: "Tutte le guide"
   },
 
   categories: {
@@ -128,6 +137,8 @@ export default {
       { h3: "2. Dividetevi in squadre", p: "Usa il pannello “Le tue squadre” per dare un nome e un colore a ogni gruppo: il punteggio vi segue da un gioco all'altro." },
       { h3: "3. Proietta e gioca", p: "Collega il PC alla TV o usa il mirroring dello smartphone. Un conduttore gestisce la partita, tutti gli altri giocano." }
     ],
+    guidesH2: "Guide e idee per le serate giochi",
+    guidesIntro: "Non sai da dove iniziare? Le nostre guide ti aiutano a scegliere i giochi giusti per il tuo gruppo e a organizzare la serata.",
     faqH2: "Domande frequenti",
     faq: [
       { q: "I giochi sono davvero gratuiti?", a: "Sì. Tutti i giochi di PartyGames Club sono gratuiti e non richiedono registrazione. Il sito è finanziato da annunci pubblicitari." },
@@ -162,6 +173,13 @@ export default {
       h1: "Contatti",
       description: "Contatta il team di PartyGames Club per segnalazioni, suggerimenti di nuovi giochi o richieste sulla privacy.",
       breadcrumb: "Contatti"
+    },
+    guides: {
+      title: "Guide ai Giochi di Gruppo: Idee, Consigli e Serate Giochi | PartyGames Club",
+      h1: "Guide ai giochi di gruppo e alle serate giochi",
+      description: "Guide pratiche per organizzare serate giochi, scegliere i giochi di gruppo giusti e preparare giochi per Natale, compleanni, ufficio e molto altro.",
+      breadcrumb: "Guide",
+      intro: "Consigli pratici e collaudati per far giocare tutti: come organizzare una serata giochi, quali giochi scegliere per il tuo gruppo e programmi pronti per feste, compleanni ed eventi di squadra."
     },
     notFound: {
       title: "Pagina non trovata | PartyGames Club",

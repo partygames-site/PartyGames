@@ -11,7 +11,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { SITE } from "../src/config.mjs";
 import { GAMES, gamePath } from "../src/games/registry.mjs";
-import { homePage, contentPage, notFoundPage, gamePage } from "../src/templates/pages.mjs";
+import { GUIDES, guidePath } from "../src/guides/registry.mjs";
+import { homePage, contentPage, notFoundPage, gamePage, guidesIndexPage, guidePage } from "../src/templates/pages.mjs";
 import { fill, href, absUrl } from "../src/templates/util.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -36,6 +37,7 @@ async function main() {
 
   const dicts = await loadDictionaries();
   validateRegistry(dicts);
+  validateGuides();
 
   for (const code of SITE.languages) {
     const t = dicts[code];
@@ -48,6 +50,11 @@ async function main() {
 
     for (const game of GAMES.filter((g) => g.status === "live")) {
       await writePage(gamePath(game, t), gamePage(t, dicts, game, await loadGameFiles(game, code, t)));
+    }
+
+    if (GUIDES.length) await writePage(t.routes.guides, guidesIndexPage(t, dicts));
+    for (const guide of GUIDES) {
+      await writePage(guidePath(guide, t), guidePage(t, dicts, guide, await loadGuide(guide, code, t)));
     }
   }
 
@@ -106,8 +113,42 @@ function templateVars(t) {
   return {
     site: { name: SITE.name, url: SITE.url },
     controller: SITE.controller,
-    link: Object.fromEntries(Object.entries(t.routes).map(([k, v]) => [k, href(v)]))
+    link: Object.fromEntries(Object.entries(t.routes).map(([k, v]) => [k, href(v)])),
+    // {{game.fire_down}} → indirizzo del gioco nella lingua della pagina
+    game: Object.fromEntries(GAMES.filter((g) => g.status === "live").map((g) => [g.id.replace(/-/g, "_"), href(gamePath(g, t))])),
+    // {{guide.group_size}} → indirizzo della guida nella lingua della pagina
+    guide: Object.fromEntries(GUIDES.map((g) => [g.id.replace(/-/g, "_"), href(guidePath(g, t))]))
   };
+}
+
+/** Controlli sulle guide: id e slug unici, traduzioni e giochi citati esistenti */
+function validateGuides() {
+  const errors = [];
+  const ids = new Set();
+  for (const guide of GUIDES) {
+    if (ids.has(guide.id)) errors.push(`id duplicato: ${guide.id}`);
+    ids.add(guide.id);
+    for (const id of guide.games) if (!GAMES.some((g) => g.id === id)) errors.push(`${guide.id}: gioco sconosciuto "${id}"`);
+    for (const code of SITE.languages) {
+      const m = guide.i18n[code];
+      if (!m) { errors.push(`${guide.id}: manca la lingua "${code}"`); continue; }
+      for (const field of ["slug", "title", "desc", "keywords"]) if (!m[field]) errors.push(`${guide.id}.${code}: campo "${field}" mancante`);
+    }
+  }
+  for (const code of SITE.languages) {
+    const slugs = GUIDES.map((g) => g.i18n[code]?.slug);
+    const dup = slugs.filter((s, i) => slugs.indexOf(s) !== i);
+    if (dup.length) errors.push(`slug duplicati in ${code}: ${dup.join(", ")}`);
+  }
+  if (errors.length) throw new Error(`Registro guide non valido:\n  - ${errors.join("\n  - ")}`);
+}
+
+async function loadGuide(guide, code, t) {
+  const file = path.join(SRC, "guides", guide.id, `${code}.html`);
+  if (!existsSync(file)) throw new Error(`Guida "${guide.id}": manca ${path.relative(ROOT, file)}`);
+  const html = fill(stripComments(await fs.readFile(file, "utf8")), templateVars(t));
+  const words = html.replace(/<[^>]+>/g, " ").split(/\s+/).filter((w) => /\p{L}/u.test(w)).length;
+  return { html, faq: extractFaq(html), readMinutes: Math.max(1, Math.round(words / 220)) };
 }
 
 function stripComments(html) {
@@ -168,6 +209,12 @@ function sitemap(dicts) {
     ...GAMES.filter((g) => g.status === "live").map((g) => ({
       paths: Object.fromEntries(SITE.languages.map((c) => [c, gamePath(g, dicts[c])])),
       priority: "0.9",
+      changefreq: "monthly"
+    })),
+    ...(GUIDES.length ? [{ paths: routeGroup(dicts, "guides"), priority: "0.7", changefreq: "weekly" }] : []),
+    ...GUIDES.map((g) => ({
+      paths: Object.fromEntries(SITE.languages.map((c) => [c, guidePath(g, dicts[c])])),
+      priority: "0.8",
       changefreq: "monthly"
     })),
     { paths: routeGroup(dicts, "about"), priority: "0.4", changefreq: "yearly" },

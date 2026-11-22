@@ -190,6 +190,7 @@ function renderHeader(t, dicts, paths) {
     </a>
     <nav class="main-nav" aria-label="${esc(t.ui.mainNavLabel)}">
       <a href="${href(t.routes.home)}#games">${esc(t.ui.navGames)}</a>
+      <a href="${href(t.routes.guides)}">${esc(t.ui.navGuides)}</a>
       <a class="main-nav__optional" href="${href(t.routes.home)}#how-to-play">${esc(t.ui.navHowTo)}</a>
       <a href="${href(t.routes.about)}">${esc(t.ui.navAbout)}</a>
       ${langLinks}
@@ -218,6 +219,7 @@ function renderFooter(t, year) {
       <h2>${esc(t.ui.footerGames)}</h2>
       <a href="${href(t.routes.home)}#games">${esc(t.categories.all)}</a>
       <a href="${href(t.routes.home)}#how-to-play">${esc(t.ui.navHowTo)}</a>
+      <a href="${href(t.routes.guides)}">${esc(t.ui.navGuides)}</a>
     </nav>
     <nav class="site-footer__col" aria-label="${esc(t.ui.footerInfo)}">
       <h2>${esc(t.ui.footerInfo)}</h2>
