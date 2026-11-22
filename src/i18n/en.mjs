@@ -108,7 +108,7 @@ export default {
     ogTitle: "PartyGames Club — Group games to play at home",
     eyebrow: "Free · No app · No sign-up",
     h1: "Party games and group games to play at home",
-    lead: "Quizzes, team challenges, word games and games for couples for parties, birthdays and game nights. Open a game on your phone or cast it to the TV and you're ready in seconds.",
+    lead: "Quizzes, team challenges, word games and games for couples for parties, birthdays and game nights. Open the game on your phone or computer and cast it to the TV: you're ready in seconds.",
     ctaPrimary: "Pick a game",
     ctaRandom: "Surprise me",
     stats: [

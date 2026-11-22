@@ -111,7 +111,7 @@ export default {
     ogTitle: "PartyGames Club — Giochi di gruppo da fare in casa",
     eyebrow: "Gratis · Senza app · Senza registrazione",
     h1: "Giochi di gruppo e party game da fare in casa",
-    lead: "Quiz, sfide a squadre, giochi di parole e di coppia per feste, compleanni e serate tra amici. Apri il gioco sul telefono o proiettalo sulla TV: si comincia in pochi secondi.",
+    lead: "Quiz, sfide a squadre, giochi di parole e di coppia per feste, compleanni e serate tra amici. Apri il gioco sul telefono o computer e proiettalo sulla TV: si comincia in pochi secondi.",
     ctaPrimary: "Scegli un gioco",
     ctaRandom: "Scegli a caso",
     stats: [
