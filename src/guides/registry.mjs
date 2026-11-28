@@ -107,6 +107,28 @@ export const GUIDES = [
     }
   },
   {
+    id: "new-year",
+    icon: "🎆",
+    color: "#ffb020",
+    published: "2026-11-28",
+    updated: "2026-11-28",
+    games: ["most-likely", "top10", "canzoni-emoji", "fire-down", "coppie"],
+    i18n: {
+      en: {
+        slug: "new-years-eve-party-games-at-home",
+        title: "New Year's Eve Party Games at Home: a Plan from Dinner to Midnight",
+        desc: "The best games for a New Year's Eve party at home with friends: icebreakers, a team championship after dinner, a grand finale before the countdown and a ready-made hour-by-hour plan.",
+        keywords: "new year's eve party games, new year's eve games at home, nye party ideas, games for new year's eve with friends"
+      },
+      it: {
+        slug: "giochi-capodanno-in-casa-con-amici",
+        title: "Giochi per Capodanno in casa con amici: il programma dalla cena a mezzanotte",
+        desc: "I giochi migliori per un Capodanno in casa con gli amici: rompighiaccio, campionato a squadre dopo cena, gran finale prima del conto alla rovescia e un programma pronto ora per ora.",
+        keywords: "giochi per capodanno, giochi capodanno in casa, giochi capodanno con amici, cosa fare a capodanno in casa"
+      }
+    }
+  },
+  {
     id: "kids-birthday",
     icon: "🎂",
     color: "#ffd600",

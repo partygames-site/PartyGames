@@ -174,8 +174,70 @@ async function renderPins() {
   await fs.rm(TMP, { recursive: true, force: true });
 }
 
+/* ---------------- Copertine social (node tools/render-images.mjs --covers) ----------------
+   Facebook 1640×624 (contenuto nella fascia centrale, perché su mobile i lati vengono tagliati)
+   e banner del profilo Reddit 1920×384. Salvate in marketing/covers/ (fuori da git). */
+const OUT_COVERS = path.join(ROOT, "marketing/covers");
+const COVER_TEXT = {
+  en: { title: "Free party games for your TV", sub: "Quizzes, team challenges and family games · No app, no sign-up" },
+  it: { title: "Giochi di gruppo gratis sulla TV", sub: "Quiz, sfide a squadre e giochi per famiglie · Niente app, niente registrazione" }
+};
+const COVER_GAMES = ["top10", "canzoni-emoji", "most-likely", "dilemmi", "skill-test", "coppie", "fire-down", "ordina"];
+
+function coverHtml({ w, h, title, sub, banner }) {
+  const games = COVER_GAMES.map((id) => GAMES.find((x) => x.id === id)).filter(Boolean);
+  const tile = (g, size) => `<div class="tile" style="width:${size}px;height:${size}px;font-size:${Math.round(size * 0.55)}px;` +
+    `background:color-mix(in srgb, ${g.color} 20%, transparent);border-color:color-mix(in srgb, ${g.color} 60%, transparent)">${g.icon}</div>`;
+  const left = games.slice(0, 4), right = games.slice(4);
+  const side = (list, pos) => banner
+    ? `<div class="side ${pos}">${list.map((g) => tile(g, 96)).join("")}</div>`
+    : "";
+  const row = banner ? "" : `<div class="row">${games.map((g) => tile(g, 92)).join("")}</div>`;
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${FONT_CSS}
+html,body{margin:0;width:${w}px;height:${h}px;overflow:hidden}
+body{background:#0a0e1a;color:#f2f4ff;font-family:Inter,sans-serif;position:relative}
+.blob{position:absolute;border-radius:50%;filter:blur(110px)}
+.b1{width:${h * 1.3}px;height:${h * 1.3}px;background:#ff2d55;top:-${h * 0.6}px;left:-${h * 0.3}px;opacity:.38}
+.b2{width:${h * 1.4}px;height:${h * 1.4}px;background:#b06aff;bottom:-${h * 0.7}px;right:-${h * 0.2}px;opacity:.5}
+.b3{width:${h * 0.9}px;height:${h * 0.9}px;background:#4dd9ff;top:${h * 0.2}px;left:${w * 0.45}px;opacity:.2}
+.wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.brand{display:flex;align-items:center;gap:18px;font-family:Poppins;font-weight:900;font-size:${banner ? 44 : 50}px}
+.brand b{background:linear-gradient(90deg,#4dd9ff,#b06aff 55%,#ff2d55);-webkit-background-clip:text;color:transparent}
+.brand i{font-style:normal;font-weight:700;color:#aab3d6}
+h1{font-family:Poppins;font-weight:900;font-size:${banner ? 58 : 72}px;line-height:1.05;margin:${banner ? 14 : 22}px 0 0;letter-spacing:-1px;word-spacing:8px}
+p{font-size:${banner ? 24 : 28}px;font-weight:500;color:#c3cae3;margin:${banner ? 12 : 16}px 0 0}
+.row{display:flex;gap:18px;margin-top:34px}
+.tile{display:grid;place-items:center;border-radius:26px;border:3px solid;line-height:1}
+.side{position:absolute;top:50%;transform:translateY(-50%);display:grid;grid-template-columns:repeat(2,96px);gap:18px}
+.side.l{left:120px;transform:translateY(-50%) rotate(-6deg)}.side.r{right:120px;transform:translateY(-50%) rotate(6deg)}
+.url{display:inline-block;margin-top:${banner ? 16 : 30}px;font-weight:700;font-size:${banner ? 22 : 26}px;color:#0a0e1a;background:#ffd600;border-radius:999px;padding:${banner ? "7px 22px" : "10px 28px"}}
+</style></head><body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+${side(left, "l")}${side(right, "r")}
+<div class="wrap">
+  <div class="brand">${LOGO(banner ? 60 : 72)}<span>Party<b>Games</b> <i>Club</i></span></div>
+  <h1>${esc(title)}</h1>
+  <p>${esc(sub)}</p>
+  ${row}
+  ${banner ? "" : `<span class="url">partygamesclub.com</span>`}
+</div></body></html>`;
+}
+
+async function renderCovers() {
+  await fs.mkdir(OUT_COVERS, { recursive: true });
+  for (const code of SITE.languages) {
+    const c = COVER_TEXT[code];
+    await capture(coverHtml({ w: 1640, h: 624, ...c }), 1640, 624, path.join(OUT_COVERS, `facebook-cover-${code}.png`));
+  }
+  const en = COVER_TEXT.en;
+  await capture(coverHtml({ w: 1920, h: 384, ...en, banner: true }), 1920, 384, path.join(OUT_COVERS, "reddit-banner-en.png"));
+  console.log("✔ 3 copertine in marketing/covers/");
+  await fs.rm(TMP, { recursive: true, force: true });
+}
+
 async function main() {
   if (process.argv.includes("--pins")) return renderPins();
+  if (process.argv.includes("--covers")) return renderCovers();
   await fs.mkdir(OUT_ICONS, { recursive: true });
   await fs.mkdir(OUT_OG, { recursive: true });
 
